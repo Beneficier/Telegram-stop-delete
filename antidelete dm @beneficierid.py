@@ -9,13 +9,29 @@ api_id = ''
 api_hash = ''
 phone_number = ''
 
-# Initialisation du client
 client = TelegramClient('session_name', api_id, api_hash)
 
 user_message_ids = {}
 user_message_ids_previous = {}
 
 emojis = ["✉️", "📁", "📝", "🚀", "🔍", "🗑️", "📜", "❓"]
+
+
+def banner():
+    print("""
+
+             )     (    (         (       (     
+   (      ( /(     )\ ) )\ )  (   )\ )    )\ )  
+ ( )\ (   )\())(  (()/((()/(  )\ (()/((  (()/(  
+ )((_))\ ((_)\ )\  /(_))/(_)|((_) /(_))\  /(_)) 
+((_)_((_) _((_|(_)(_))_(_)) )\___(_))((_)(_))   
+ | _ ) __| \| | __| |_ |_ _((/ __|_ _| __| _ \  
+ | _ \ _|| .` | _|| __| | | | (__ | || _||   /  
+ |___/___|_|\_|___|_|  |___| \___|___|___|_|_\  
+
+                                          
+    """)
+
 
 def get_random_emoji():
     return random.choice(emojis)
@@ -165,6 +181,7 @@ async def main():
     await client.run_until_disconnected()
 
 if __name__ == "__main__":
+    banner()  
     print(f"{get_random_emoji()} 🔐 Initialisation du script... Veuillez patienter.")
     with client:
         client.loop.run_until_complete(main())
